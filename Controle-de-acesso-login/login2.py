@@ -1,19 +1,29 @@
 import random
 import string
 
+# enviar codigo depois do login
+
+
 # função para gerar uma senha forte com letras maiúsculas, minúsculas, números e símbolos
+
+
 def generate_password():
     length = 12
     letters = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(letters) for i in range(length))
 
 # função para enviar um token de acesso para o usuário
+
+
 def send_access_token(user):
-    token = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(6))
+    token = ''.join(random.choice(string.ascii_letters + string.digits)
+                    for i in range(6))
     print(f"Token de acesso enviado para {user}: {token}")
     return token
 
 # função para verificar o login com autenticação de dois fatores
+
+
 def two_factor_auth(user):
     access_granted = False
     while not access_granted:
@@ -28,9 +38,10 @@ def two_factor_auth(user):
         access_granted = True
     print("Bem-vindo(a)!", user)
 
+
 # banco de dados de usuários e senhas
 users = {
-    'user1': {'password': generate_password(), 'access_token': send_access_token('user1')},
+    'user1': {'password': "senha123", 'access_token': send_access_token('user1')},
     'user2': {'password': generate_password(), 'access_token': send_access_token('user2')},
     'user3': {'password': generate_password(), 'access_token': send_access_token('user3')}
 }

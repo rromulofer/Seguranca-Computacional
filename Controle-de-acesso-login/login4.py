@@ -14,8 +14,8 @@
 import hashlib
 
 # Definir nome de usuário e senha válidos
-valid_username = "user123"
-valid_password = "pass123"
+valid_username = "romulo"
+valid_password = "Romulo@123"
 
 # Solicitar entrada do usuário
 username = input("Digite seu nome de usuário: ")
