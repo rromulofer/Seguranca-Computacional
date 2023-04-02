@@ -34,7 +34,10 @@ def check_password_strength(password):
 
 # Função para verificar o login com autenticação de dois fatores
 def two_factor_auth(user, password_entry, token_entry, message_label, strength_label):
-    if password_entry.get() != users[user]['password']:
+    # Verificar se o usuário está no banco de dados
+    if user not in users:
+        message_label.config(text="Usuário não encontrado. Tente novamente.")
+    elif password_entry.get() != users[user]['password']:
         message_label.config(text="Senha incorreta. Tente novamente.")
     elif token_entry.get() != users[user]['access_token']:
         message_label.config(text="Token de acesso inválido. Tente novamente.")
