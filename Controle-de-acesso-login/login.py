@@ -1,3 +1,9 @@
+#  Prof. Ausberto S. Castro Vera
+#  Disciplina : Segurança Computacional
+#  UENF-CCT-LCMAT-CC
+#  Data: Abril 2023
+#  Aluno: Rômulo Souza Fernandes
+
 import random
 import string
 import tkinter as tk
