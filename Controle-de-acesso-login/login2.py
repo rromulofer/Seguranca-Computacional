@@ -11,21 +11,28 @@
 # 3 - Token de acesso
 
 # Bibliotecas utilizadas
-# Utiliza a biblioteca random para gerar o token de acesso de forma aleatória
+# Gera o token de acesso de forma aleatória
 import random 
 
+# Utilizada junto com a random para gerar senhas aleatórias
+# Também para verificar se a senha possui caracteres especiais
 import string
 
+# Criação da interface
 import tkinter as tk
 
-# Função para enviar um token de acesso para o usuário
+# Função utilizada para gerar um token de acesso aleatório e enviar para o usuário. 
+# O token é composto por letras e números, com um comprimento de 6 caracteres.
 def send_access_token(user):
     token = ''.join(random.choice(string.ascii_letters + string.digits)
                     for i in range(6))
     print(f"Token de acesso enviado para {user}: {token}")
     return token
 
-# Função para verificar a força da senha
+# Função responsável por verificar a força da senha informada pelo usuário. 
+# A força da senha é calculada com base no seu comprimento, presença de letras 
+# maiúsculas e minúsculas, números e caracteres especiais. A força da senha é 
+# classificada em uma escala de 1 a 4.
 def check_password_strength(password):
     # Inicializa a força da senha como 0
     strength = 0
@@ -48,7 +55,9 @@ def check_password_strength(password):
         
     return strength
 
-# Função para solicitar o token de acesso
+# Função usada para solicitar um token de acesso para o usuário. 
+# Se o usuário estiver no banco de dados, a função chama a função send_access_token() 
+# para gerar um novo token e atualiza o banco de dados com o novo token.
 def request_access_token(user, message_label):
     # Verifica se o usuário está no banco de dados
     if user not in users:
@@ -57,7 +66,10 @@ def request_access_token(user, message_label):
         users[user]['access_token'] = send_access_token(user)
         message_label.config(text=f"Token de acesso enviado para {user}.")
 
-# Função para verificar o login com autenticação de dois fatores
+# Função responsável por verificar o login do usuário com autenticação de dois fatores. 
+# A função verifica se o usuário está no banco de dados, se a senha informada está correta
+#  e solicita o token de acesso. Se o login for bem-sucedido, a função exibe uma mensagem 
+# de boas-vindas e a força da senha.
 def two_factor_auth(user, password_entry, token_entry, message_label, strength_label):
     # Verifica se o usuário está no banco de dados
     if user not in users:
@@ -73,7 +85,9 @@ def two_factor_auth(user, password_entry, token_entry, message_label, strength_l
         # Solicitar o token de acesso
         request_access_token(user, message_label)
 
-# Função para verificar o token
+# Função utilizada para verificar se o token de acesso informado pelo usuário é válido. 
+# A função verifica se o usuário está no banco de dados e se o token informado é igual 
+# ao token armazenado no banco de dados.
 def verify_access_token():
     user = username_entry.get()
     if user in users:
