@@ -11,10 +11,11 @@
 # 3 - Token de acesso
 
 # Bibliotecas utilizadas
+
 # Gera o token de acesso de forma aleatória
 import random 
 
-# Utilizada junto com a random para gerar senhas aleatórias
+# Utilizada junto com a random para gerar tokens aleatórios
 # Também para verificar se a senha possui caracteres especiais
 import string
 
@@ -119,7 +120,7 @@ access_token_label = tk.Label(root, text="Token de acesso:")
 access_token_entry = tk.Entry(root)
 submit_button = tk.Button(root, text="Entrar", command=lambda: two_factor_auth(username_entry.get(), password_entry, access_token_entry, message_label, strength_label))
 verify_token_button = tk.Button(root, text="Verificar token", command=verify_access_token)
-message_label = tk.Label(root, text="Digite seu nome de usuário")
+message_label = tk.Label(root, text="Digite seu nome de usuário e senha")
 strength_label = tk.Label(root, text="Força da senha:")
 
 # Posiciona os widgets na janela
