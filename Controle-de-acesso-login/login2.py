@@ -6,7 +6,7 @@
 
 # Controle de acesso - Login
 # Com 3 mecanismos de segurança
-# 1 - Senha (maiúscula, números, símbolos)
+# 1 - Senha
 # 2 - Força da senha
 # 3 - Token de acesso
 
