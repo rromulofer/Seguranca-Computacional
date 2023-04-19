@@ -88,9 +88,6 @@ def two_factor_auth(user, password_entry, token_entry, message_label, strength_l
 # Função utilizada para verificar se o token de acesso informado pelo usuário é válido. 
 # A função verifica se o usuário está no banco de dados e se o token informado é igual 
 # ao token armazenado no banco de dados.
-# Função utilizada para verificar se o token de acesso informado pelo usuário é válido. 
-# A função verifica se o usuário está no banco de dados e se o token informado é igual 
-# ao token armazenado no banco de dados.
 def verify_access_token():
     user = username_entry.get()
     if user in users:
@@ -101,11 +98,15 @@ def verify_access_token():
             # Cria a nova janela de login bem-sucedido
             success_window = tk.Toplevel(root)
             success_window.title("Login bem-sucedido")
-    
-            # Cria o rótulo para exibir a mensagem de boas-vindas
+
+            # Cria um rótulo para exibir o nome do user
+            user_label = tk.Label(success_window, text=f"Olá, {user}")
+            user_label.pack()
+
+            # Cria um rótulo para exibir a mensagem de boas-vindas
             welcome_label = tk.Label(success_window, text="Bem-vindo(a) ao sistema!")
             welcome_label.pack()
-    
+
              # Cria um botão para fechar a janela de login bem-sucedido e a janela principal
             def close_windows():
                 success_window.destroy()
