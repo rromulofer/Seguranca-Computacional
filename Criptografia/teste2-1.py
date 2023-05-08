@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-import base64
-from cryptography.fernet import Fernet
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-
-class Criptografia:
-    def __init__(self, chave):
-        self.chave = chave
-
-    def criptografar_fernet(self, texto):
-        chave_bytes = self.chave.encode()
-        f = Fernet(base64.urlsafe_b64encode(chave_bytes))
-        texto_bytes = texto.encode()
-        texto_criptografado = f.encrypt(texto_bytes)
-        return texto_criptografado
-
-    def descriptografar_fernet(self, texto_criptografado):
-        chave_bytes = self.chave.encode()
-        f = Fernet(base64.urlsafe_b64encode(chave_bytes))
-        texto_bytes = f.decrypt(texto_criptografado)
-        texto_descriptografado = texto_bytes.decode()
-        return texto_descriptografado
-
-    def criptografar_aes(self, texto):
-        chave_bytes = self.chave.encode()
-        iv = b'1234567890123456'
-        cipher = AES.new(chave_bytes, AES.MODE_CBC, iv)
-        texto_bytes = texto.encode()
-        texto_pad = pad(texto_bytes, AES.block_size)
-        texto_criptografado = cipher.encrypt(texto_pad)
-        return texto_criptografado
-
-    def descriptografar_aes(self, texto_criptografado):
-        chave_bytes = self.chave.encode()
-        iv = b'1234567890123456'
-        cipher = AES.new(chave_bytes, AES.MODE_CBC, iv)
-        texto_pad = cipher.decrypt(texto_criptografado)
-        texto_bytes = unpad(texto_pad, AES.block_size)
-        texto_descriptografado = texto_bytes.decode()
-        return texto_descriptografado
-=======
 import os
 import sys
 from Crypto.Cipher import AES
@@ -124,48 +82,47 @@ def choose_algorithm():
 
 
 def encrypt_text(key, choice, text):
-    if choice == '1':
+    if choice == 1:
         # Criptografia simétrica usando AES-256
-        iv = Random.new().read(AES.block_size)
-        cipher = AES.new(key, AES.MODE_CFB, iv)
-        ciphertext, iv = encrypt_text(key, choice, text)
+        ciphertext, iv = encrypt_aes(key, text)
         return ciphertext, iv
-    elif choice == '2':
+    elif choice == 2:
         # Criptografia assimétrica usando RSA
         public_key = deserialize_rsa_key(input("Digite a chave pública: "))
-        cipher = PKCS1_OAEP.new(public_key)
-        ciphertext, iv = encrypt_text(key, choice, text)
-        return ciphertext, None
-
-def decrypt_text(key, algorithm, ciphertext, iv=None):
-    if choice == '1':
-        ciphertext, iv = encrypt_text(key, text)
-        return ciphertext, iv
-    elif choice == '2':
-        ciphertext = encrypt_file(key, text)
+        ciphertext = encrypt_rsa(public_key, text)
         return ciphertext, None
     else:
         print("Opção inválida.")
         return None, None
 
-
+def decrypt_text(key, algorithm, ciphertext, iv=None):
+    if algorithm == 1:
+        plaintext = decrypt_aes(key, ciphertext, iv)
+        return plaintext
+    elif algorithm == 2:
+        private_key = deserialize_rsa_key(input("Digite a chave privada: "))
+        plaintext = decrypt_rsa(private_key, ciphertext)
+        return plaintext
+    else:
+        print("Opção inválida.")
+        return None
 
 if __name__ == '__main__':
-    choice = str(choose_algorithm())
-    if choice == 1:
-        key = input_password().encode('utf-8')
-    elif choice == 2:
-        key = serialize_rsa_key(generate_rsa_key())
-    text = input_text()
-
+    choice = choose_algorithm()
     if choice == '1':
         key = input_password().encode('utf-8')
+        ciphertext, iv = encrypt_text(key, choice, text)
+        if ciphertext is not None:
+            encrypted_text = ciphertext.hex()
+            iv_hex = iv.hex() if iv is not None else None
+            output_text(text, encrypted_text, iv_hex)
     elif choice == '2':
         key = serialize_rsa_key(generate_rsa_key())
-    ciphertext = encrypt_text(key, choice, text)
+        ciphertext = encrypt_text(key, choice, text)
+        if ciphertext is not None:
+            encrypted_text = ciphertext.hex()
+            output_text(text, encrypted_text)
 
-    encrypted_text = ciphertext.hex()
-    output_text(text, encrypted_text)
     choice = input("Digite 1 para salvar em arquivo ou 2 para criptografar um arquivo inteiro, ou qualquer outra tecla para sair: ")
     if choice == '1':
         filename = input("Digite o nome do arquivo: ")
@@ -179,4 +136,3 @@ if __name__ == '__main__':
         output_file(encrypted_file, ciphertext)
     else:
         sys.exit(0)
->>>>>>> aa8ac93f0f5e84df3c0664ccfbf5d3986a5b6136
