@@ -156,5 +156,3 @@ elif opcao == 6:
     decriptar_arquivo()
 else:
     print("Opção inválida.")
-
-
