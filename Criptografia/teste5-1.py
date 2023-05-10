@@ -40,7 +40,7 @@ def cifra_de_substituicao(texto, chave, modo):
 
 
 def encriptar_palavra():
-    palavra = input("Digite uma palavra: ")
+    palavra = input("Digite a palavra a ser criptografada: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'cifrar'
@@ -56,7 +56,7 @@ def encriptar_palavra():
 
 
 def decriptar_palavra():
-    palavra_cifrada = input("Digite a palavra: ")
+    palavra_cifrada = input("Digite a palavra criptografada: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -72,7 +72,7 @@ def decriptar_palavra():
 
 
 def encriptar_texto():
-    texto = input("Digite o texto: ")
+    texto = input("Digite o texto a ser criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'cifrar'
@@ -88,7 +88,7 @@ def encriptar_texto():
 
 
 def decriptar_texto():
-    texto_cifrado = input("Digite o texto: ")
+    texto_cifrado = input("Digite o texto criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -104,7 +104,7 @@ def decriptar_texto():
 
 
 def encriptar_arquivo():
-    caminho_arquivo = input("Digite o caminho do arquivo: ")
+    caminho_arquivo = input("Digite o caminho do arquivo a ser criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'cifrar'
@@ -126,7 +126,7 @@ def encriptar_arquivo():
 
 
 def decriptar_arquivo():
-    caminho_arquivo = input("Digite o caminho do arquivo: ")
+    caminho_arquivo = input("Digite o caminho do arquivo criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -138,9 +138,9 @@ def decriptar_arquivo():
         print("Arquivo não encontrado.")
 
 
-opcao = int(input("Digite:\n 1-criptografar uma palavra \n 2-descriptografar uma palavra, "
-                  "\n 3-criptografar um texto, \n 4-descriptografar um texto, "
-                  "\n 5-criptografar um arquivo \n 6-descriptografar um arquivo \n Opção desejada:"))
+opcao = int(input("Digite:\n 1-para criptografar uma palavra \n 2-para descriptografar uma palavra, "
+                  "\n 3-para criptografar um texto, \n 4-para descriptografar um texto, "
+                  "\n 5-para criptografar um arquivo \n 6-para descriptografar um arquivo \n Opção desejada:"))
 
 if opcao == 1:
     encriptar_palavra()

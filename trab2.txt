@@ -1,0 +1,4 @@
+Em python, implemente um sistema com 2 algoritmos de criptografia: 
+- o sistema deve mostrar os processos de encriptação e decriptação
+- apresentação de texto normal e texto encriptado simultaneamente
+- Opção de criptografia para uma palavra, para um texto e para um arquivo.

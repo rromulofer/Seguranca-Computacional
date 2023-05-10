@@ -1,4 +1,6 @@
 import os
+import tkinter as tk
+from tkinter import ttk
 
 def cifra_de_cesar(texto, chave, modo):
     alfabeto = 'abcdefghijklmnopqrstuvwxyz'
@@ -40,23 +42,22 @@ def cifra_de_substituicao(texto, chave, modo):
 
 
 def encriptar_palavra():
-    palavra = input("Digite uma palavra: ")
-    chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
-    cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
+    palavra = entrada_palavra.get()
+    chave = int(entrada_chave.get())
+    cifra = escolha_cifra.get()
     modo = 'cifrar'
-    if cifra.upper() == 'C':
+    if cifra == 'Cifra de César':
         palavra_cifrada = cifra_de_cesar(palavra, chave, modo)
-    elif cifra.upper() == 'S':
+    elif cifra == 'Cifra de Substituição':
         palavra_cifrada = cifra_de_substituicao(palavra, chave, modo)
     else:
-        print("Opção inválida.")
         return
-    print("Palavra original:", palavra)
-    print("Palavra criptografada:", palavra_cifrada)
+    saida_palavra_cifrada['text'] = palavra_cifrada
+
 
 
 def decriptar_palavra():
-    palavra_cifrada = input("Digite a palavra: ")
+    palavra_cifrada = input("Digite a palavra criptografada: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -72,7 +73,7 @@ def decriptar_palavra():
 
 
 def encriptar_texto():
-    texto = input("Digite o texto: ")
+    texto = input("Digite o texto a ser criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'cifrar'
@@ -88,7 +89,7 @@ def encriptar_texto():
 
 
 def decriptar_texto():
-    texto_cifrado = input("Digite o texto: ")
+    texto_cifrado = input("Digite o texto criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -104,7 +105,7 @@ def decriptar_texto():
 
 
 def encriptar_arquivo():
-    caminho_arquivo = input("Digite o caminho do arquivo: ")
+    caminho_arquivo = input("Digite o caminho do arquivo a ser criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'cifrar'
@@ -126,7 +127,7 @@ def encriptar_arquivo():
 
 
 def decriptar_arquivo():
-    caminho_arquivo = input("Digite o caminho do arquivo: ")
+    caminho_arquivo = input("Digite o caminho do arquivo criptografado: ")
     chave = int(input("Digite a chave de deslocamento ou a chave de substituição: "))
     cifra = input("Digite 'C' para cifra de César ou 'S' para cifra de substituição: ")
     modo = 'decifrar'
@@ -138,9 +139,9 @@ def decriptar_arquivo():
         print("Arquivo não encontrado.")
 
 
-opcao = int(input("Digite:\n 1-criptografar uma palavra \n 2-descriptografar uma palavra, "
-                  "\n 3-criptografar um texto, \n 4-descriptografar um texto, "
-                  "\n 5-criptografar um arquivo \n 6-descriptografar um arquivo \n Opção desejada:"))
+opcao = int(input("Digite:\n 1-para criptografar uma palavra \n 2-para descriptografar uma palavra, "
+                  "\n 3-para criptografar um texto, \n 4-para descriptografar um texto, "
+                  "\n 5-para criptografar um arquivo \n 6-para descriptografar um arquivo \n Opção desejada:"))
 
 if opcao == 1:
     encriptar_palavra()
@@ -157,4 +158,10 @@ elif opcao == 6:
 else:
     print("Opção inválida.")
 
+# criar a janela principal
+janela = tk.Tk()
+janela.title("Criptografia")
 
+# criar entrada de texto para a palavra
+entrada_palavra = tk.Entry(janela)
+entrada_palavra.pack()

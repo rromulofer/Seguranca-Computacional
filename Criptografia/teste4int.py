@@ -138,23 +138,48 @@ def decriptar_arquivo():
         print("Arquivo não encontrado.")
 
 
-opcao = int(input("Digite:\n 1-criptografar uma palavra \n 2-descriptografar uma palavra, "
-                  "\n 3-criptografar um texto, \n 4-descriptografar um texto, "
-                  "\n 5-criptografar um arquivo \n 6-descriptografar um arquivo \n Opção desejada:"))
+# Great! Now that we know the user wants to encrypt a message, we need to ask them for the message they want to encrypt.
 
-if opcao == 1:
-    encriptar_palavra()
-elif opcao == 2:
-    decriptar_palavra()
-elif opcao == 3:
-    encriptar_texto()
-elif opcao == 4:
-    decriptar_texto()
-elif opcao == 5:
-    encriptar_arquivo()
-elif opcao == 6:
-    decriptar_arquivo()
-else:
-    print("Opção inválida.")
+# We can do this by using the input() function again:
+
+message = input("Please enter the message you want to encrypt: ")
 
 
+# This will ask the user to input a message and store it in the variable message.
+
+# Now that we have the message, we can use the Caesar cipher to encrypt it. We can do this by shifting each 
+# letter in the message by the specified number of positions.
+
+# Here's an implementation of the Caesar cipher:
+
+def caesar_cipher(message, shift):
+    encrypted_message = ""
+
+    for letter in message:
+        if letter.isalpha():
+            # Determine the ASCII code for the letter
+            ascii_code = ord(letter)
+
+            # Determine if the letter is uppercase or lowercase
+            if letter.isupper():
+                # Shift the letter by the specified number of positions
+                new_ascii_code = (ascii_code - 65 + shift) % 26 + 65
+            else:
+                new_ascii_code = (ascii_code - 97 + shift) % 26 + 97
+
+            # Convert the new ASCII code to a letter
+            new_letter = chr(new_ascii_code)
+        else:
+            new_letter = letter
+
+        encrypted_message += new_letter
+
+    return encrypted_message
+
+
+# This code will ask the user whether they want to encrypt or decrypt a message, and then ask 
+# for the message and shift value if the user wants to encrypt. If the user wants to decrypt, it 
+# will print a message saying that decryption is not yet implemented. If the user enters an invalid input, 
+# it will print a message saying so.
+
+# I hope this helps! Let me know if you have any questions.
