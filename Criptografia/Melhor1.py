@@ -156,10 +156,13 @@ def save_file(text):
 
 root = Tk()
 root.title("Sistema de Criptografia")
-root.geometry("580x320")
+root.geometry("580x350")
+
+# Alterar cor de fundo da janela principal
+root.configure(background="black")
 
 # Escolha do algoritmo
-algorithm_label = Label(root, text="Escolha o Algoritmo:")
+algorithm_label = Label(root, text="Escolha o Algoritmo:", bg="black", fg="white")
 algorithm_label.pack()
 algorithm_choice = StringVar(root)
 algorithm_choice.set("Cifra de César")
@@ -167,61 +170,58 @@ algorithm_dropdown = OptionMenu(root, algorithm_choice, "Cifra de César", "Cifr
 algorithm_dropdown.pack()
 
 # Frame para a coluna "Palavra"
-frame_word = Frame(root)
+frame_word = Frame(root, bg="black")
 frame_word.pack(side=LEFT, padx=10)
 
 # Entrada de palavra
-input_word_label = Label(frame_word, text="Palavra:")
+input_word_label = Label(frame_word, text="Palavra:", bg="black", fg="white")
 input_word_label.pack()
-input_word = Entry(frame_word)
+input_word = Entry(frame_word, bg="white")
 input_word.pack()
 
 # Botões para criptografar e decriptografar palavras
-encrypt_word_button = Button(frame_word, text="Criptografar Palavra", command=encrypt_word)
+encrypt_word_button = Button(frame_word, text="Criptografar Palavra", command=encrypt_word, bg="lime", fg="black")
 encrypt_word_button.pack()
-decrypt_word_button = Button(frame_word, text="Decriptografar Palavra", command=decrypt_word)
+decrypt_word_button = Button(frame_word, text="Decriptografar Palavra", command=decrypt_word, bg="red", fg="black")
 decrypt_word_button.pack()
 
 # Saída de palavra
-output_word_label = Label(frame_word, text="Resultado:")
+output_word_label = Label(frame_word, text="Resultado:", bg="black", fg="white")
 output_word_label.pack()
-output_word = Entry(frame_word, state='readonly')
+output_word = Entry(frame_word, state='readonly', bg="white")
 output_word.pack()
 
 # Frame para a coluna "Texto"
-frame_text = Frame(root)
+frame_text = Frame(root, bg="black")
 frame_text.pack(side=LEFT, padx=10)
 
 # Entrada de texto
-input_text_label = Label(frame_text, text="Texto:")
+input_text_label = Label(frame_text, text="Texto:", bg="black", fg="white")
 input_text_label.pack()
-input_text = Text(frame_text, height=5, width=30)
+input_text = Text(frame_text, height=5, width=30, bg="white")
 input_text.pack()
 
 # Botões para criptografar e decriptografar textos
-encrypt_text_button = Button(frame_text, text="Criptografar Texto", command=encrypt_text)
+encrypt_text_button = Button(frame_text, text="Criptografar Texto", command=encrypt_text, bg="lime", fg="black")
 encrypt_text_button.pack()
-decrypt_text_button = Button(frame_text, text="Decriptografar Texto", command=decrypt_text)
+decrypt_text_button = Button(frame_text, text="Decriptografar Texto", command=decrypt_text, bg="red", fg="black")
 decrypt_text_button.pack()
 
 # Saída de texto
-output_text_label = Label(frame_text, text="Resultado:")
+output_text_label = Label(frame_text, text="Resultado:", bg="black", fg="white")
 output_text_label.pack()
-output_text = Text(frame_text, height=5, width=30)
+output_text = Text(frame_text, height=5, width=30, bg="white")
 output_text.pack()
 
 # Frame para a coluna "Arquivo"
-frame_file = Frame(root)
+frame_file = Frame(root, bg="black")
 frame_file.pack(side=LEFT, padx=10)
 
 # Botões para criptografar e decriptografar arquivos
-encrypt_file_button = Button(frame_file, text="Criptografar Arquivo", command=encrypt_file)
+encrypt_file_button = Button(frame_file, text="Criptografar Arquivo", command=encrypt_file, bg="lime", fg="black")
 encrypt_file_button.pack()
-decrypt_file_button = Button(frame_file, text="Decriptografar Arquivo", command=decrypt_file)
+decrypt_file_button = Button(frame_file, text="Decriptografar Arquivo", command=decrypt_file, bg="red", fg="black")
 decrypt_file_button.pack()
 
 # Execução da interface gráfica
 root.mainloop()
-
-
-
