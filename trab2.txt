@@ -1,4 +1,8 @@
-Em python, implemente um sistema com 2 algoritmos de criptografia: 
-- o sistema deve mostrar os processos de encriptação e decriptação
-- apresentação de texto normal e texto encriptado simultaneamente
-- Opção de criptografia para uma palavra, para um texto e para um arquivo.
+Minha pergunta é um pouco longa, então a continuação seguirá na próxima mensagem. Por favor, continue. 
+
+Em python, implemente um sistema com 2 algoritmos de criptografia:
+- Cifra de cesar e cifra de substituição.
+- O sistema deve mostrar os processos de encriptação e decriptação.
+- Apresentação de texto normal e texto encriptado simultaneamente.
+- Ter a opção do usuário escolher se deseja criptografia para uma palavra, para um texto ou para um arquivo.
+- Utilizar tkinter para que toda interação com o usuário seja por uma interface gráfica

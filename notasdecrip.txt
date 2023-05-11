@@ -1,0 +1,8 @@
+Minha pergunta A© um pouco longa, entA£o a continuaA§A£o seguirA¡ na prA³xima mensagem. Por favor, continue. 
+
+Em python, implemente um sistema com 2 algoritmos de criptografia:
+- Cifra de cesar e cifra de substituiA§A£o.
+- O sistema deve mostrar os processos de encriptaA§A£o e decriptaA§A£o.
+- ApresentaA§A£o de texto normal e texto encriptado simultaneamente.
+- Ter a opA§A£o do usuA¡rio escolher se deseja criptografia para uma palavra, para um texto ou para um arquivo.
+- Utilizar tkinter para que toda interaA§A£o com o usuA¡rio seja por uma interface grA¡fica
