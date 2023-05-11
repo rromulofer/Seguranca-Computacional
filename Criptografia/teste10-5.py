@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import filedialog
 
+# Chave: qazwsxedcrfvtgbyhnujmikolp
+
 # Implementação da Cifra de César
 def caesar_encrypt(text, shift):
     encrypted_text = ""
@@ -220,7 +222,3 @@ output_text.pack()
 
 # Execução da interface gráfica
 root.mainloop()
-
-
-
-

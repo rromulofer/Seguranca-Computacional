@@ -155,7 +155,7 @@ def save_file(text):
 # Interface gráfica
 root = Tk()
 root.title("Sistema de Criptografia")
-root.geometry("500x300")
+root.geometry("300x600")
 
 # Entrada de palavra
 input_word_label = Label(root, text="Palavra:")
@@ -220,3 +220,5 @@ output_text.pack()
 
 # Execução da interface gráfica
 root.mainloop()
+
+

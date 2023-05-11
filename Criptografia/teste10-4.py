@@ -22,8 +22,11 @@ def substitution_encrypt(text, key):
     for char in text:
         if char.isalpha():
             ascii_offset = ord('a') if char.islower() else ord('A')
-            index = ord(char) - ascii_offset
-            encrypted_char = key[index % len(key)]
+            index = ord(char.lower()) - ascii_offset
+            if char.islower():
+                encrypted_char = key[index % len(key)].lower()
+            else:
+                encrypted_char = key[index % len(key)].upper()
             encrypted_text += encrypted_char
         else:
             encrypted_text += char
@@ -34,8 +37,11 @@ def substitution_decrypt(text, key):
     for char in text:
         if char.isalpha():
             ascii_offset = ord('a') if char.islower() else ord('A')
-            index = key.index(char)
-            decrypted_char = chr(index + ascii_offset)
+            index = key.find(char)
+            if index != -1:
+                decrypted_char = chr(index + ascii_offset)
+            else:
+                decrypted_char = char
             decrypted_text += decrypted_char
         else:
             decrypted_text += char
@@ -87,7 +93,7 @@ def encrypt_text():
         key = key_entry.get()
         encrypted_text = substitution_encrypt(text, key)
 
-    output_text.config(state='normal')
+        output_text.config(state='normal')
     output_text.delete("1.0", "end")
     output_text.insert("1.0", encrypted_text)
     output_text.config(state='disabled')
@@ -183,7 +189,7 @@ key_label.pack()
 key_entry = Entry(root)
 key_entry.pack()
 
-# Botões para criptografar e decriptografar palavras
+# Botões para criptografar e decriptografar uma palavra
 encrypt_word_button = Button(root, text="Criptografar Palavra", command=encrypt_word)
 encrypt_word_button.pack()
 decrypt_word_button = Button(root, text="Decriptografar Palavra", command=decrypt_word)
@@ -195,32 +201,25 @@ input_text_label.pack()
 input_text = Text(root, height=5, width=30)
 input_text.pack()
 
-# Botões para criptografar e decriptografar textos
+# Botões para criptografar e decriptografar um texto
 encrypt_text_button = Button(root, text="Criptografar Texto", command=encrypt_text)
 encrypt_text_button.pack()
 decrypt_text_button = Button(root, text="Decriptografar Texto", command=decrypt_text)
 decrypt_text_button.pack()
 
-# Botões para criptografar e decriptografar arquivos
+# Botões para criptografar e decriptografar um arquivo
 encrypt_file_button = Button(root, text="Criptografar Arquivo", command=encrypt_file)
 encrypt_file_button.pack()
 decrypt_file_button = Button(root, text="Decriptografar Arquivo", command=decrypt_file)
 decrypt_file_button.pack()
 
 # Saída de palavra ou texto
-output_word_label = Label(root, text="Resultado:")
+output_word_label = Label(root, text="Saída:")
 output_word_label.pack()
 output_word = Entry(root, state='readonly')
 output_word.pack()
 
-output_text_label = Label(root, text="Resultado:")
-output_text_label.pack()
-output_text = Text(root, height=5, width=30)
+output_text = Text(root, height=5, width=30, state='disabled')
 output_text.pack()
 
-# Execução da interface gráfica
 root.mainloop()
-
-
-
-
