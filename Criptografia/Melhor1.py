@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import filedialog
 
 # Chave: qazwsxedcrfvtgbyhnujmikolp
@@ -156,72 +157,132 @@ def save_file(text):
 
 root = Tk()
 root.title("Sistema de Criptografia")
-root.geometry("580x350")
-
-# Alterar cor de fundo da janela principal
-root.configure(background="black")
+root.geometry("400x450")
 
 # Escolha do algoritmo
-algorithm_label = Label(root, text="Escolha o Algoritmo:", bg="black", fg="white")
+algorithm_label = Label(root, text="Escolha o Algoritmo:", font=("Arial", 12, "bold"))
 algorithm_label.pack()
 algorithm_choice = StringVar(root)
 algorithm_choice.set("Cifra de César")
 algorithm_dropdown = OptionMenu(root, algorithm_choice, "Cifra de César", "Cifra de Substituição")
 algorithm_dropdown.pack()
 
-# Frame para a coluna "Palavra"
-frame_word = Frame(root, bg="black")
-frame_word.pack(side=LEFT, padx=10)
+# Notebook (abas)
+notebook = ttk.Notebook(root)
+notebook.pack(pady=10)
+
+# Aba "Palavra"
+frame_word = Frame(notebook)
+frame_word.pack()
 
 # Entrada de palavra
-input_word_label = Label(frame_word, text="Palavra:", bg="black", fg="white")
+input_word_label = Label(frame_word, text="Palavra:")
 input_word_label.pack()
-input_word = Entry(frame_word, bg="white")
+input_word = Entry(frame_word)
 input_word.pack()
 
 # Botões para criptografar e decriptografar palavras
-encrypt_word_button = Button(frame_word, text="Criptografar Palavra", command=encrypt_word, bg="lime", fg="black")
+encrypt_word_button = Button(frame_word, text="Criptografar Palavra", command=encrypt_word)
 encrypt_word_button.pack()
-decrypt_word_button = Button(frame_word, text="Decriptografar Palavra", command=decrypt_word, bg="red", fg="black")
+decrypt_word_button = Button(frame_word, text="Decriptografar Palavra", command=decrypt_word)
 decrypt_word_button.pack()
 
 # Saída de palavra
-output_word_label = Label(frame_word, text="Resultado:", bg="black", fg="white")
+output_word_label = Label(frame_word, text="Resultado:")
 output_word_label.pack()
-output_word = Entry(frame_word, state='readonly', bg="white")
+output_word = Entry(frame_word, state='readonly')
 output_word.pack()
 
-# Frame para a coluna "Texto"
-frame_text = Frame(root, bg="black")
-frame_text.pack(side=LEFT, padx=10)
+# Adicionar a aba "Palavra" ao notebook
+notebook.add(frame_word, text="Palavra")
+
+# Aba "Texto"
+frame_text = Frame(notebook)
+frame_text.pack()
 
 # Entrada de texto
-input_text_label = Label(frame_text, text="Texto:", bg="black", fg="white")
+input_text_label = Label(frame_text, text="Texto:")
 input_text_label.pack()
-input_text = Text(frame_text, height=5, width=30, bg="white")
+input_text = Text(frame_text, height=5, width=30)
 input_text.pack()
 
 # Botões para criptografar e decriptografar textos
-encrypt_text_button = Button(frame_text, text="Criptografar Texto", command=encrypt_text, bg="lime", fg="black")
+encrypt_text_button = Button(frame_text, text="Criptografar Texto", command=encrypt_text)
 encrypt_text_button.pack()
-decrypt_text_button = Button(frame_text, text="Decriptografar Texto", command=decrypt_text, bg="red", fg="black")
+decrypt_text_button = Button(frame_text, text="Decriptografar Texto", command=decrypt_text)
 decrypt_text_button.pack()
 
 # Saída de texto
-output_text_label = Label(frame_text, text="Resultado:", bg="black", fg="white")
+output_text_label = Label(frame_text, text="Resultado:")
 output_text_label.pack()
-output_text = Text(frame_text, height=5, width=30, bg="white")
+output_text = Text(frame_text, height=5, width=30)
 output_text.pack()
 
-# Frame para a coluna "Arquivo"
-frame_file = Frame(root, bg="black")
-frame_file.pack(side=LEFT, padx=10)
+# Adicionar a aba "Texto" ao notebook
+notebook.add(frame_text, text="Texto")
+
+# Aba "Arquivo"
+frame_file = Frame(notebook)
+frame_file.pack()
 
 # Botões para criptografar e decriptografar arquivos
-encrypt_file_button = Button(frame_file, text="Criptografar Arquivo", command=encrypt_file, bg="lime", fg="black")
+encrypt_file_button = Button(frame_file, text="Criptografar Arquivo", command=encrypt_file)
 encrypt_file_button.pack()
-decrypt_file_button = Button(frame_file, text="Decriptografar Arquivo", command=decrypt_file, bg="red", fg="black")
+decrypt_file_button = Button(frame_file, text="Decriptografar Arquivo", command=decrypt_file)
 decrypt_file_button.pack()
+
+# Adicionar a aba "Arquivo" ao notebook
+notebook.add(frame_file, text="Arquivo")
+
+
+# Aba "Deslocamento e Chave"
+frame_chave = Frame(notebook)
+frame_chave.pack()
+
+# Deslocamento (para Cifra de César)
+shift_label = Label(frame_chave, text="Deslocamento:")
+shift_label.pack()
+shift_entry = Entry(frame_chave)
+shift_entry.insert(0, "5")
+shift_entry.pack()
+
+# Chave (para Cifra de Substituição)
+key_label = Label(frame_chave, text="Chave:")
+key_label.pack()
+key_entry = Entry(frame_chave)
+key_entry.insert(0, "qazwsxedcrfvtgbyhnujmikolp")
+key_entry.pack()
+
+# Adicionar a aba "Deslocamento e Chave" ao notebook
+notebook.add(frame_chave, text="Deslocamento e Chave")
+
+
+# Aba "Sobre"
+frame_sobre = Frame(notebook)
+frame_sobre.pack()
+
+# Título
+title_label = Label(frame_sobre, text="Sistema de Criptografia Educacional", font=("Arial", 14, "bold"))
+title_label.pack(pady=10)
+
+# Texto
+text = """Autores: 
+Rômulo Souza Fernandes
+Ausberto S. Castro Vera
+
+UENF – CCT – LCMAT
+Ciência da Computação
+2023
+"""
+
+text_box = Text(frame_sobre, height=8, width=40, font=("Arial", 11))
+text_box.insert("1.0", text)
+text_box.configure(state="disabled")
+text_box.pack(padx=10)
+
+# Adicionar a aba "Sobre" ao notebook
+notebook.add(frame_sobre, text="Sobre")
+
 
 # Execução da interface gráfica
 root.mainloop()

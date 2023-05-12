@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import filedialog
 
 # Chave: qazwsxedcrfvtgbyhnujmikolp
@@ -156,7 +157,7 @@ def save_file(text):
 
 root = Tk()
 root.title("Sistema de Criptografia")
-root.geometry("580x320")
+root.geometry("300x600")
 
 # Escolha do algoritmo
 algorithm_label = Label(root, text="Escolha o Algoritmo:")
@@ -166,59 +167,59 @@ algorithm_choice.set("Cifra de César")
 algorithm_dropdown = OptionMenu(root, algorithm_choice, "Cifra de César", "Cifra de Substituição")
 algorithm_dropdown.pack()
 
-# Frame para a coluna "Palavra"
-frame_word = Frame(root)
-frame_word.pack(side=LEFT, padx=10)
-
 # Entrada de palavra
-input_word_label = Label(frame_word, text="Palavra:")
+input_word_label = Label(root, text="Palavra:")
 input_word_label.pack()
-input_word = Entry(frame_word)
+input_word = Entry(root)
 input_word.pack()
 
+
+# Deslocamento (para Cifra de César)
+shift_label = Label(root, text="Deslocamento:")
+shift_label.pack()
+shift_entry = Entry(root)
+shift_entry.pack()
+
+# Chave (para Cifra de Substituição)
+key_label = Label(root, text="Chave:")
+key_label.pack()
+key_entry = Entry(root)
+key_entry.pack()
+
 # Botões para criptografar e decriptografar palavras
-encrypt_word_button = Button(frame_word, text="Criptografar Palavra", command=encrypt_word)
+encrypt_word_button = Button(root, text="Criptografar Palavra", command=encrypt_word)
 encrypt_word_button.pack()
-decrypt_word_button = Button(frame_word, text="Decriptografar Palavra", command=decrypt_word)
+decrypt_word_button = Button(root, text="Decriptografar Palavra", command=decrypt_word)
 decrypt_word_button.pack()
 
-# Saída de palavra
-output_word_label = Label(frame_word, text="Resultado:")
-output_word_label.pack()
-output_word = Entry(frame_word, state='readonly')
-output_word.pack()
-
-# Frame para a coluna "Texto"
-frame_text = Frame(root)
-frame_text.pack(side=LEFT, padx=10)
-
 # Entrada de texto
-input_text_label = Label(frame_text, text="Texto:")
+input_text_label = Label(root, text="Texto:")
 input_text_label.pack()
-input_text = Text(frame_text, height=5, width=30)
+input_text = Text(root, height=5, width=30)
 input_text.pack()
 
 # Botões para criptografar e decriptografar textos
-encrypt_text_button = Button(frame_text, text="Criptografar Texto", command=encrypt_text)
+encrypt_text_button = Button(root, text="Criptografar Texto", command=encrypt_text)
 encrypt_text_button.pack()
-decrypt_text_button = Button(frame_text, text="Decriptografar Texto", command=decrypt_text)
+decrypt_text_button = Button(root, text="Decriptografar Texto", command=decrypt_text)
 decrypt_text_button.pack()
 
-# Saída de texto
-output_text_label = Label(frame_text, text="Resultado:")
-output_text_label.pack()
-output_text = Text(frame_text, height=5, width=30)
-output_text.pack()
-
-# Frame para a coluna "Arquivo"
-frame_file = Frame(root)
-frame_file.pack(side=LEFT, padx=10)
-
 # Botões para criptografar e decriptografar arquivos
-encrypt_file_button = Button(frame_file, text="Criptografar Arquivo", command=encrypt_file)
+encrypt_file_button = Button(root, text="Criptografar Arquivo", command=encrypt_file)
 encrypt_file_button.pack()
-decrypt_file_button = Button(frame_file, text="Decriptografar Arquivo", command=decrypt_file)
+decrypt_file_button = Button(root, text="Decriptografar Arquivo", command=decrypt_file)
 decrypt_file_button.pack()
+
+# Saída de palavra ou texto
+output_word_label = Label(root, text="Resultado:")
+output_word_label.pack()
+output_word = Entry(root, state='readonly')
+output_word.pack()
+
+output_text_label = Label(root, text="Resultado:")
+output_text_label.pack()
+output_text = Text(root, height=5, width=30)
+output_text.pack()
 
 # Execução da interface gráfica
 root.mainloop()
