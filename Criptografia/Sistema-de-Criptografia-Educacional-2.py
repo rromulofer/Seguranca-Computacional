@@ -270,7 +270,7 @@ text = """Autores:
 Rômulo Souza Fernandes
 Ausberto S. Castro Vera
 
-UENF – CCT – LCMAT
+UENF - CCT - LCMAT
 Ciência da Computação
 2023
 """
