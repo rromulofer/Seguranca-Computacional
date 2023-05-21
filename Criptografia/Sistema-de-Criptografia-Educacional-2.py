@@ -1,8 +1,12 @@
+#  Prof. Ausberto S. Castro Vera
+#  Disciplina : Segurança Computacional
+#  UENF-CCT-LCMAT-CC
+#  Data: Abril 2023
+#  Autores: Rômulo Souza Fernandes e Ausberto S. Castro Vera
+
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
-
-# Chave: qazwsxedcrfvtgbyhnujmikolp
 
 # Implementação da Cifra de César
 def caesar_encrypt(text, shift):
@@ -282,7 +286,6 @@ text_box.pack(padx=10)
 
 # Adicionar a aba "Sobre" ao notebook
 notebook.add(frame_sobre, text="Sobre")
-
 
 # Execução da interface gráfica
 root.mainloop()
