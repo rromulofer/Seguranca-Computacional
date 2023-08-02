@@ -1,7 +1,7 @@
 #  Prof. Ausberto S. Castro Vera
 #  Disciplina : Segurança Computacional
 #  UENF-CCT-LCMAT-CC
-#  Data: Abril 2023
+#  Data: Junho 2023
 #  Autores: Rômulo Souza Fernandes e Ausberto S. Castro Vera
 
 from tkinter import *
