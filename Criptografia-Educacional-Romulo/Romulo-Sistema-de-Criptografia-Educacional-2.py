@@ -1,17 +1,8 @@
-<<<<<<< HEAD:Criptografia-Educacional-Romulo/Romulo-Sistema-de-Criptografia-Educacional-2.py
 #  Prof. Ausberto S. Castro Vera
 #  Disciplina : Segurança Computacional
 #  UENF-CCT-LCMAT-CC
 #  Data: Junho 2023
 #  Autores: Rômulo Souza Fernandes e Ausberto S. Castro Vera
-=======
-#   Sistema de Criptografia Educacional
-#   Prof. Ausberto S. Castro Vera
-#   Disciplina : Segurança Computacional
-#   UENF-CCT-LCMAT-CC
-#   Data: Maio 2023
-#   Autores: Rômulo Souza Fernandes e Ausberto S. Castro Vera
->>>>>>> 70d174ee0898847040e4e163274f18f5fd682f96:Criptografia/Sistema-de-Criptografia-Educacional-2.py
 
 from tkinter import *
 from tkinter import ttk
